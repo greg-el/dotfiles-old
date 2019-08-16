@@ -1,0 +1,128 @@
+[colors]
+background = ${env:color_hex0}
+foreground = ${env:color_hex0}
+foreground-alt = ${env:color_hex7}
+primary = ${env:color_hex0}
+secondary = ${env:color_hex2}
+alert = ${xrdb:color3}
+
+[bar/bottom-right]
+modules-right = spotify-control date
+modules-left = i3-main
+monitor = ${env:MONITOR:DVI-I-1}
+font-0 = Misc Tamsyn:${colors.primary}:size=13;2
+font-1 = FontAwesome:size=10;2
+#bottom = true
+height = 20
+#width = 1888
+#offset-x = 16
+#override-redirect = true
+background = ${colors.background}
+module-margin = 2
+
+[bar/bottom-left]
+modules-left = date
+modules-right = i3-sub
+monitor = ${env:MONITOR:HDMI-0}
+font-0 = "Misc Tamsyn:size=13;2"
+font-1 = FontAwesome:size=10;2
+#bottom = true
+height = 20
+#width = 1048
+#offset-x = 15
+#override-redirect = true
+background = ${colors.background}
+module-margin = 2
+
+[settings]
+screenchange-reload = true
+
+[module/spotify]
+type = custom/script
+exec = if [[ "$(playerctl status)" = "Playing" ]]; then playerctl metadata title; echo -n "-"; playerctl metadata artist; else echo -n "Spotify Paused"; fi
+interval = 1
+#format = <label> 
+
+[module/spotify-control]
+type = custom/script
+exec = if [[ `playerctl status` = "Playing" ]]; then echo -n `playerctl metadata title && echo -n " - " && playerctl metadata artist`; else echo -n "no music playing"; fi
+click-left = if [[ "$(playerctl status)" = "Playing" ]]; then playerctl pause; echo -n "paused"; else playerctl play; echo -n "playing"; fi
+click-right = playerctl next
+click-middle = playerctl previous
+interval = 1.0
+
+[module/interface]
+type = custom/script
+exec = cat ~/interface-volume/prev.txt
+click-left = bash ~/interface-volume/bash-up
+click-right = bash ~/interface-volume/bash-dn
+interval = 1.0
+
+[module/network]
+type = internal/network
+interface = enp24s0
+interval = 5.0
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %d-%m-%Y
+time = %H:%M:%S
+label = %date% %time%
+
+[module/i3-main]
+type = internal/i3
+pin-workspaces = false
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-default = 
+format = <label-state> <label-mode>
+label-focused = %icon%
+label-focused-foreground = #ffffff
+label-focused-background = ${env:color_hex10}
+label-focused-underline = #fba922
+label-focused-padding = 2
+label-unfocused = %icon%
+label-unfocused-padding = 2
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+label-visible = %icon%
+label-visible-underline = #555555
+label-visible-padding = 2
+
+[module/i3-sub]
+type = internal/i3
+pin-workspaces = true
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+
+label-focused = %icon%
+label-focused-foreground = #ffffff
+label-focused-background = ${env:color_hex10}
+label-focused-underline = #fba922
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+label-visible = %icon%
+label-visible-underline = #555555
+label-visible-padding = 2
+
+
