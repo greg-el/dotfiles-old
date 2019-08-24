@@ -9,16 +9,16 @@
     * NOTE: I am including all of them even though I am using a sub-set. I keep
     * tweaking my theme and having access to all of the colors here is handy. */
 
-    color0:#0F0F0F;
-    color1:#335051;
-    color2:#62535D;
-    color3:#9E3A56;
-    color4:#995C6C;
-    color5:#747F8E;
-    color6:#A77589;
-    color7:#c9c0c9;
-    color8:#8c868c;
-    color9:#335051;
+    color0:#0E1107;
+    color1:#546A57;
+    color2:#658B24;
+    color3:#678F5C;
+    color4:#6B9151;
+    color5:#6E956C;
+    color6:#8BA359;
+    color7:#afc4bc;
+    color8:#7a8983;
+    color9:#546A57;
     background:             rgba ( 0, 0, 0, 90 % );
     foreground:              @color2;
     transparent-background: rgba ( 0, 0, 0, 0 % );

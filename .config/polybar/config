@@ -72,6 +72,7 @@ label = %date% %time%
 
 [module/i3-main]
 type = internal/i3
+index-sort = true
 pin-workspaces = false
 ws-icon-0 = 1;
 ws-icon-1 = 2;

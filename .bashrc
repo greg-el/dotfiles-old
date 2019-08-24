@@ -57,7 +57,7 @@ done
 # aliases
 alias todo="vim ~/todo"
 alias bm="/home/greg/.bashmount/bashmount"
-alias daily=". ~/dailyProgrammer/daily"
+alias daily="./home/greg/projects/dailyProgrammer/daily"
 alias wakeserver="wol b8:27:eb:cc:70:f2"
 alias sleepserver='ssh -t pi "systemctl suspend -i"'
 alias tab='python /home/greg/projects/tabFinder/main.py'
