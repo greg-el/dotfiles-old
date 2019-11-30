@@ -7,7 +7,7 @@ secondary = ${env:color_hex2}
 alert = ${xrdb:color3}
 
 [bar/bottom-right]
-modules-right = spotify-control date
+modules-right = spotify-control main-light sec-light date
 modules-left = i3-main
 monitor = ${env:MONITOR:DVI-I-1}
 font-0 = Misc Tamsyn:${colors.primary}:size=13;2
@@ -18,7 +18,7 @@ height = 20
 #offset-x = 16
 #override-redirect = true
 background = ${colors.background}
-module-margin = 2
+module-margin = 1
 
 [bar/bottom-left]
 modules-left = date
@@ -126,4 +126,14 @@ label-visible = %icon%
 label-visible-underline = #555555
 label-visible-padding = 2
 
+[module/main-light]
+type = custom/script
+exec = echo "*"
+click-left = ssh pi "python3 ~/scripts/light-toggle.py --on main"
+click-right = ssh pi "python3 ~/scripts/light-toggle.py --off main"
 
+[module/sec-light]
+type = custom/script
+exec = echo "*"
+click-left = ssh pi "python3 ~/scripts/light-toggle.py --on sec"
+click-right = ssh pi "python3 ~/scripts/light-toggle.py --off sec"
