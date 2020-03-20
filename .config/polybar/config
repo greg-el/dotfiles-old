@@ -1,15 +1,15 @@
 [colors]
-background = ${env:color_hex0}
-foreground = ${env:color_hex0}
-foreground-alt = ${env:color_hex7}
-primary = ${env:color_hex0}
-secondary = ${env:color_hex2}
+background = ${env:hex0}
+foreground = ${env:hex0}
+foreground-alt = ${env:hex7}
+primary = ${env:hex0}
+secondary = ${env:hex2}
 alert = ${xrdb:color3}
 
 [bar/bottom-right]
-modules-right = spotify-control main-light sec-light date
+modules-right = spotify-control date main-light
 modules-left = i3-main
-monitor = ${env:MONITOR:DVI-I-1}
+monitor = ${env:MONITOR:HDMI-0}
 font-0 = Misc Tamsyn:${colors.primary}:size=13;2
 font-1 = FontAwesome:size=10;2
 #bottom = true
@@ -23,7 +23,7 @@ module-margin = 1
 [bar/bottom-left]
 modules-left = date
 modules-right = i3-sub
-monitor = ${env:MONITOR:HDMI-0}
+monitor = ${env:MONITOR:DVI-I-1}
 font-0 = "Misc Tamsyn:size=13;2"
 font-1 = FontAwesome:size=10;2
 #bottom = true
@@ -39,14 +39,16 @@ screenchange-reload = true
 
 [module/spotify]
 type = custom/script
-exec = if [[ "$(playerctl status)" = "Playing" ]]; then playerctl metadata title; echo -n "-"; playerctl metadata artist; else echo -n "Spotify Paused"; fi
+exec = if [ "$(playerctl status)" = "Playing" ]; then playerctl metadata title; echo -n "-"; playerctl metadata artist; else echo -n "Spotify Paused"; fi
 interval = 1
 #format = <label> 
 
 [module/spotify-control]
+format-background = ${env:hex3}
+format-padding = 1
 type = custom/script
-exec = if [[ `playerctl status` = "Playing" ]]; then echo -n `playerctl metadata title && echo -n " - " && playerctl metadata artist`; else echo -n "no music playing"; fi
-click-left = if [[ "$(playerctl status)" = "Playing" ]]; then playerctl pause; echo -n "paused"; else playerctl play; echo -n "playing"; fi
+exec = if [ $(playerctl status) = "Playing" ]; then echo -n $(playerctl metadata title && echo -n " - " && playerctl metadata artist); else echo -n "no music playing"; fi
+click-left = if [ "$(playerctl status)" = "Playing" ]; then playerctl pause; echo -n "paused"; else playerctl play; echo -n "playing"; fi
 click-right = playerctl next
 click-middle = playerctl previous
 interval = 1.0
@@ -64,6 +66,8 @@ interface = enp24s0
 interval = 5.0
 
 [module/date]
+format-background = ${env:hex4}
+format-padding = 1
 type = internal/date
 interval = 1.0
 date = %d-%m-%Y
@@ -84,7 +88,7 @@ ws-icon-default = 
 format = <label-state> <label-mode>
 label-focused = %icon%
 label-focused-foreground = #ffffff
-label-focused-background = ${env:color_hex10}
+label-focused-background = ${env:hex10}
 label-focused-underline = #fba922
 label-focused-padding = 2
 label-unfocused = %icon%
@@ -95,6 +99,8 @@ label-mode-background = #e60053
 label-visible = %icon%
 label-visible-underline = #555555
 label-visible-padding = 2
+label-urgent = %icon%
+label-urgent-background = #7F0000
 
 [module/i3-sub]
 type = internal/i3
@@ -111,7 +117,7 @@ format = <label-state> <label-mode>
 
 label-focused = %icon%
 label-focused-foreground = #ffffff
-label-focused-background = ${env:color_hex10}
+label-focused-background = ${env:hex10}
 label-focused-underline = #fba922
 label-focused-padding = 2
 
@@ -127,13 +133,10 @@ label-visible-underline = #555555
 label-visible-padding = 2
 
 [module/main-light]
+format-background = ${env:hex7}
+format-padding = 1
 type = custom/script
 exec = echo "*"
-click-left = ssh pi "python3 ~/scripts/light-toggle.py --on main"
-click-right = ssh pi "python3 ~/scripts/light-toggle.py --off main"
+click-left = curl 192.168.0.121:5000/allon
+click-right = curl 192.168.0.121:5000/alloff
 
-[module/sec-light]
-type = custom/script
-exec = echo "*"
-click-left = ssh pi "python3 ~/scripts/light-toggle.py --on sec"
-click-right = ssh pi "python3 ~/scripts/light-toggle.py --off sec"

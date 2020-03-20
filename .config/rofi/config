@@ -1,5 +1,13 @@
-rofi.combi-modi:	window
+rofi.combi-modi:	"window,drun,run"
 rofi.theme:		solarized
 rofi.font:		hack 10
 rofi.modi:		combi
 rofi.theme: /home/greg/.config/rofi/themes/theme.rasi
+rofi.width:		17
+rofi.lines:		10
+rofi.eh:		1
+rofi.bw:		3
+rofi.sidebar-mode: false
+rofi.location:  1
+rofi.yoffset:	38
+rofi.xoffset:	18

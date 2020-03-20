@@ -1,7 +1,6 @@
-#Xcursor.theme: Bibata_Oil
+Xcursor.theme: Bibata_Oil
 Xcursor.size: 16
 
 URxvt.font: 		xft:Misc Tamsyn:size=10
-#URxvt.font:		xft:Terminus:size=10
 URxvt*depth: 		32
 URxvt.scrollBar: 	false

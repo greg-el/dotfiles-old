@@ -1,17 +1,30 @@
 #!/bin/bash
-colors=(${color_hex0} ${color_hex1} ${color_hex2} ${color_hex3} ${color_hex4} ${color_hex5} ${color_hex6} ${color_hex7}
-         ${color_hex8} ${color_hex9})
+unset hex0
+unset hex1
+unset hex2
+unset hex3
+unset hex4
+unset hex5
+unset hex6
+unset hex7
+unset hex10
+
+source ~/.cache/wal/colors.sh
+
+
+colors=(${color0} ${color1} ${color2} ${color3} ${color4} ${color5} ${color6} ${color7} ${color8} 
+${color9} ${color10} ${color11} ${color12} ${color13} ${color14})
+
 lines=(12 13 14 15 16 17 18 19 20 21 22)
-hashchar='#'
 semichar=';'
 path='/home/greg/.config/rofi/themes/'
 
-for i in ${!colors[*]}
+for i in ${!lines[*]}
 do
     line=${lines[$i]}
     trancolor=${colors[$i]}
-    color=$(echo $trancolor | cut -c4-9)
-    sed -i "${line}"'s/.*/    color'"${i}"':'"${hashchar}${color}${semichar}"'/' "$path"'theme_template.rasi' 
+    color=$(echo $trancolor)
+    sed -i "${line}"'s/.*/    color'"${i}"':'"${color}${semichar}"'/' "$path"'theme_template.rasi' 
 done
 
 rm ${path}theme.rasi

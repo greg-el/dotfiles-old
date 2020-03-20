@@ -184,7 +184,8 @@ bindsym --release Print exec flameshot gui
 bindcode 173 exec playerctl previous
 bindcode 172 exec playerctl play-pause
 bindcode 171 exec playerctl next
-
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # opening workspaces on startup
 exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/greg/.config/i3/workspace-1.json'"
@@ -192,9 +193,9 @@ exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/greg/.config/i3/w
 #exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/greg/.config/i3/workspace-3.json'"
 
 # filling workspaces
-exec urxvt -name Term1 -hold -e bash -c "cat ~/todo && bash" 
-exec urxvt -name Term2 -hold -e bash -c "ranger"
-exec urxvt -name Term3 -hold -e bash -c "neofetch && wal -R && bash" 
+exec urxvt -name Term1 -hold -e zsh -c "cat ~/todo && zsh" 
+exec urxvt -name Term2 -hold -e zsh -c "ranger"
+exec urxvt -name Term3 -hold -e zsh -c "neofetch && wal -R && zsh" 
 exec --no-startup-id "i3-msg 'workspace 2; exec spotify'"
 exec --no-startup-id "i3-msg 'workspace 3; exec firefox'"
 
@@ -202,19 +203,20 @@ exec --no-startup-id "i3-msg 'workspace 3; exec firefox'"
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # output to correct monitors
-workspace 1 output DVI-I-1
-workspace 2 output HDMI-0
-workspace 3 output DVI-I-1
+workspace 1 output HDMI-0
+workspace 2 output DVI-I-1
+workspace 3 output HDMI-0
+workspace 4 output DVI-I-1
 
 ##==========##
 # Workspaces #
 ##==========##
-assign [class="Spotify"] $ws2
+for_window [class="Spotify"] move to workspace $ws2
 
 # startup
-exec_always compton 
+exec_always picom
 exec_always flameshot 
-
+exec_always /home/greg/scripts/startup &
 
 
 # COLOURS
@@ -226,3 +228,7 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
+
+floating_minimum_size 20 x 20
+for_window [title="Pallete"] floating enable
+for_window [class="jetbrains-pycharm" title="win0"] floating enable;
