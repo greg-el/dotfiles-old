@@ -1,0 +1,10 @@
+#!/bin/sh
+CURR_DIR=$(pwd)
+cd ~/.aurtemp
+git clone "https://aur.archlinux.org/"$1".git"
+echo "https://aur.archlinux.org/"$1".git"
+cd $1
+makepkg -si
+cd ..
+rm -rf $1
+cd "$CURR_DIR"

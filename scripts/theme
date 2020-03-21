@@ -1,0 +1,5 @@
+#!/bin/bash
+wal -i "$1"
+. ~/.config/rofi/themes/themer 
+. ~/.config/polybar/launch.sh &
+spicetify apply &

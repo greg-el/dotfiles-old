@@ -1,0 +1,22 @@
+#!/bin/bash
+i3-msg [class="Spotify"] move to workspace 2
+PROGRAM_OPEN=true
+COUNT=0
+
+while $PROGRAM_OPEN; do
+	if [ $COUNT -gt 500 ]; then
+		exit 1
+	fi
+
+	if [ -n $(pgrep spotify | head -n 1) ] && [ -n $(pgrep firefox) ]; then	
+		PIDS=$(xdotool search -name "Mozilla Firefox")
+		for i in $PIDS; do
+			STARTUP=$(xprop -id $i | grep _NET_STARTUP)
+			if [ -z "$STARTUP" ]; then
+				i3-msg [id=$(echo $i)] move to workspace 4
+			fi
+		done
+	PROGRAM_OPEN=false
+	fi
+	COUNT=$((COUNT + 1))
+done
