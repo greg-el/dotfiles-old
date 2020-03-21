@@ -21,7 +21,8 @@ echo Select a package to update:
 nl packages
 n=""
 while true; do
-	read -p 'Select Package: ' n
+	echo "Select Package: "
+	read n 
 	if [ "$n" -eq "$n" ] && [ "$n" -gt 0 ] && [ "$n" -le "$UPDATE_PKG_COUNT" ]; then
 		break
 	fi
