@@ -1,29 +1,28 @@
 #!/bin/sh
 
-BASE="https://aur.archlinux.org/packages/"
+base="https://aur.archlinux.org/packages/"
 i=1
-PKG_COUNT=$(pacman -Qm | wc -l)
+pkg_count=$(pacman -Qm | wc -l)
 echo "all" >> packages
-while [ "$i" -ne "$PKG_COUNT" ]; do
-	PACKAGE=$(pacman -Qm | head -"$i" | tail -1)
-	NAME=$(echo "$PACKAGE" | cut -d' ' -f1)
-	LOCAL=$(echo "$PACKAGE" | cut -d' ' -f2)
-	CURRENT=$(curl --silent https://aur.archlinux.org/packages/"$NAME" | grep "Package Details:" | cut -d ' ' -f4 | cut -d '<' -f1)
-	if [ "$LOCAL" != "$CURRENT" ]; then
-		#echo "$NAME" - Local "$LOCAL" // Current "$CURRENT" 
-		echo "$NAME - Local $LOCAL // Current $CURRENT" >> packages
+while [ "$i" -ne "$pkg_count" ]; do
+	package=$(pacman -Qm | head -"$i" | tail -1)
+	name=$(echo "$package" | cut -d' ' -f1)
+	local=$(echo "$package" | cut -d' ' -f2)
+	current=$(curl --silent "$base$name" | grep "Package Details:" | cut -d ' ' -f4 | cut -d '<' -f1)
+	if [ "$local" != "$current" ]; then
+		echo "$name - Local $local // Current $current" >> packages
 	fi
 	i=$((i + 1))
 done
 
-UPDATE_PKG_COUNT=$(wc -l packages | cut -d' ' -f1)
+update_pkg_count=$(wc -l packages | cut -d' ' -f1)
 echo Select a package to update:
 nl packages
 n=""
 while true; do
 	echo "Select Package: "
 	read n 
-	if [ "$n" -eq "$n" ] && [ "$n" -gt 0 ] && [ "$n" -le "$UPDATE_PKG_COUNT" ]; then
+	if [ "$n" -eq "$n" ] && [ "$n" -gt 0 ] && [ "$n" -le "$update_pkg_count" ]; then
 		break
 	fi
 done
