@@ -4,3 +4,4 @@ Xcursor.size: 16
 URxvt.font: 		xft:Misc Tamsyn:size=10
 URxvt*depth: 		32
 URxvt.scrollBar: 	false
+URxvt*dynamicColors: 	on

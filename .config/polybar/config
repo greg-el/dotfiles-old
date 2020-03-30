@@ -13,12 +13,14 @@ monitor = ${env:MONITOR:HDMI-0}
 font-0 = Misc Tamsyn:${colors.primary}:size=13;2
 font-1 = FontAwesome:size=10;2
 #bottom = true
-height = 20
-#width = 1888
-#offset-x = 16
-#override-redirect = true
+height = 25
+width = 98.3%
+offset-y = 1%
+offset-x = 0.85%
+override-redirect = true
 background = ${colors.background}
 module-margin = 1
+radius = 5
 
 [bar/bottom-left]
 modules-left = date
@@ -27,12 +29,14 @@ monitor = ${env:MONITOR:DVI-I-1}
 font-0 = "Misc Tamsyn:size=13;2"
 font-1 = FontAwesome:size=10;2
 #bottom = true
-height = 20
-#width = 1048
-#offset-x = 15
-#override-redirect = true
+height = 25
+width = 97%
+offset-y = 0.5%
+offset-x = 1.4%
+override-redirect = true
 background = ${colors.background}
 module-margin = 2
+radius = 5
 
 [settings]
 screenchange-reload = true

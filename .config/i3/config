@@ -172,7 +172,7 @@ for_window [class="^.*"] border pixel 0
 # gaps values
 gaps inner 8
 gaps outer 8
-gaps top 8
+gaps top 35
 
 
 # custom keybinds
@@ -193,7 +193,7 @@ exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/greg/.config/i3/w
 #exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/greg/.config/i3/workspace-3.json'"
 
 # filling workspaces
-exec urxvt -name Term1 -hold -e zsh -c "cat ~/todo && zsh" 
+exec urxvt -name Term1 -hold -e zsh -c "cat ~/scripts/todo && zsh" 
 exec urxvt -name Term2 -hold -e zsh -c "ranger"
 exec urxvt -name Term3 -hold -e zsh -c "neofetch && wal -R && zsh" 
 exec --no-startup-id "i3-msg 'workspace 2; exec spotify'"
@@ -232,3 +232,4 @@ client.background       #ffffff
 floating_minimum_size 20 x 20
 for_window [title="Pallete"] floating enable
 for_window [class="jetbrains-pycharm" title="win0"] floating enable;
+border_radius 5

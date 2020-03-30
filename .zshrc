@@ -14,6 +14,8 @@ compinit
 #Aliases
 alias aur=". /home/greg/scripts/aur-auto"
 alias theme='. ~/scripts/theme'
+alias ls='ls --color=auto'
+alias aur-update=". /home/greg/scripts/aur-update"
 
 #History Search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
