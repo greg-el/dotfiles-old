@@ -1,7 +1,12 @@
 Xcursor.theme: Bibata_Oil
 Xcursor.size: 16
+/*URxvt.font: 		xft:Misc Tamsyn:size=10*/
+/* fonts */
+URxvt.font:         xft:Hack-Regular:pixelsize=14,xft:Symbola
+URxvt.boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold,xft:Symbola
+URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:Symbola
 
-URxvt.font: 		xft:Misc Tamsyn:size=10
 URxvt*depth: 		32
 URxvt.scrollBar: 	false
 URxvt*dynamicColors: 	on
+URxvt.internalBorder: 	5

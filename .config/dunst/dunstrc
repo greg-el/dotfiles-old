@@ -6,7 +6,7 @@
     ### Display ###
 
     monitor = 0
-    follow = mouse
+    follow = none
 
 #   geometry = "375x20-21+38"
     geometry = "375x20-28+36"
@@ -17,7 +17,7 @@
     separator_height = 3
     padding = 12
     horizontal_padding = 12
-    frame_width = 2
+    frame_width = 0
 
     frame_color = "#B0C0BF"
     separator_color = auto
@@ -27,7 +27,7 @@
     
 
     ### Text ###
-    font = SF Pro Display 9
+    font = SF Pro Display 8
     line_height = 0
 
     markup = full
@@ -73,7 +73,7 @@
     verbosity = mesg
 
 [experimental]
-    per_monitor_dpi = false
+    per_monitor_dpi = true
 
 [shortcuts]
     close = ctrl+shift+space
