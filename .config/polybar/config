@@ -9,7 +9,7 @@ alert = ${xrdb:color3}
 [bar/bottom-right]
 modules-right = spotify-control date main-light
 modules-left = i3-main
-monitor = ${env:MONITOR:DP-4}
+monitor = ${env:MONITOR:DP-0}
 font-0 = xft:Hack-Regular:pixelsize=12;3
 font-1 = FontAwesome:size=12;3
 #bottom = true
@@ -106,15 +106,15 @@ label-focused = %icon%
 label-focused-foreground = #ffffff
 label-focused-background = ${env:hex10}
 label-focused-underline = #fba922
-label-focused-padding = 4
+label-focused-padding = 3
 label-unfocused = %icon%
-label-unfocused-padding = 4
+label-unfocused-padding = 3
 label-mode = %mode%
-label-mode-padding = 4
+label-mode-padding = 3
 label-mode-background = #e60053
 label-visible = %icon%
 label-visible-underline = #555555
-label-visible-padding = 4
+label-visible-padding = 3
 label-urgent = %icon%
 label-urgent-background = #7F0000
 

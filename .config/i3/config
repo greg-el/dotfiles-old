@@ -203,9 +203,9 @@ exec --no-startup-id "i3-msg 'workspace 3; exec firefox'"
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # output to correct monitors
-workspace 1 output DP-4
+workspace 1 output DP-0
 workspace 2 output HDMI-0
-workspace 3 output DP-4
+workspace 3 output DP-0
 workspace 4 output HDMI-0
 
 ##==========##
