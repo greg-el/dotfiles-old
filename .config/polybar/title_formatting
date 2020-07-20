@@ -1,0 +1,14 @@
+#!/bin/sh
+string="Firefox"
+title=$(xtitle)
+len=$(echo -n "$title" | wc -m)
+case "$title" in
+    *"$string"*)
+		if (( $len > 80)); then 
+			title="$(echo $title | sed 's/\s-\sMozilla\sFirefox//' | cut -b 1-80)... - Mozilla Firefox"
+		fi
+        ;;
+esac
+
+echo "$title"
+ 

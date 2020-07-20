@@ -14,11 +14,11 @@ set $mod Mod4
 set $mod1 Mod5
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Terminus 8
+font xft:Hack Regular 5
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 6
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -177,8 +177,8 @@ gaps top 8
 
 # custom keybinds
 bindsym $mod1+Return exec urxvt
-bindsym $mod+s exec rofi -show window
-bindsym $mod+d exec /home/greg/.config/rofi/launchers/launcher.sh
+bindsym $mod+s exec /home/greg/.config/rofi/rofi/launchers-git/windows.sh
+bindsym $mod+d exec /home/greg/.config/rofi/rofi/launchers-git/launcher.sh
 bindsym $mod+l exec ~/lock/lock-s
 bindsym --release Print exec flameshot gui
 bindcode 173 exec playerctl previous
@@ -195,7 +195,7 @@ exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/greg/.config/i3/w
 # filling workspaces
 exec urxvt -name Term1 -hold -e zsh -c "cat ~/scripts/todo && zsh" 
 exec urxvt -name Term2 -hold -e zsh -c "ranger"
-exec urxvt -name Term3 -hold -e zsh -c "bonsai && wal -R && zsh" 
+exec urxvt -name Term3 -hold -e zsh -c "bonsai && wal -R -q && zsh" 
 exec --no-startup-id "i3-msg 'workspace 2; exec spotify'"
 exec --no-startup-id "i3-msg 'workspace 3; exec firefox'"
 

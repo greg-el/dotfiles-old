@@ -1,5 +1,5 @@
 [colors]
-	background = "#17100e"
+	background = "#000000"
 	foreground = "#92AAB2"
 
 [global]
@@ -9,7 +9,7 @@
     follow = none
 
 #   geometry = "375x20-21+38"
-    geometry = "375x20-28+36"
+    geometry = "375x20-28+146"
     indicate_hidden = yes
     shrink = no
     transparency = 10
